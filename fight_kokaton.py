@@ -167,7 +167,7 @@ def main():
     # 複数爆弾の生成
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     
-    # 【変更】単体(beam = None)ではなく、リスト(beams = [])にする
+    # 単体(beam = None)ではなく、リスト(beams = [])にする
     beams = [] 
     
     score = Score()
@@ -197,7 +197,7 @@ def main():
                 time.sleep(5)
                 return
         
-        # 【変更】ビームと爆弾の衝突判定（二重ループ）
+        # ビームと爆弾の衝突判定（二重ループ）
         for i, bomb in enumerate(bombs):
             for j, beam in enumerate(beams):
                 if bomb is not None and beam is not None:
@@ -210,16 +210,16 @@ def main():
         # Noneになった爆弾をリストから消去
         bombs = [bomb for bomb in bombs if bomb is not None]
         
-        # 【追加】Noneになったビームをリストから消去
+        # Noneになったビームをリストから消去
         beams = [beam for beam in beams if beam is not None]
 
-        # 【追加】画面外に出たビームをリストから消去
+        # 画面外に出たビームをリストから消去
         beams = [beam for beam in beams if check_bound(beam.rct) == (True, True)]
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
         
-        # 【変更】リスト内の全ビームを更新
+        # リスト内の全ビームを更新
         for beam in beams:
             beam.update(screen)
         
