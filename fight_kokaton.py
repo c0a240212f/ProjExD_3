@@ -167,7 +167,6 @@ def main():
     # 複数爆弾の生成
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     
-    # 単体(beam = None)ではなく、リスト(beams = [])にする
     beams = [] 
     
     score = Score()
@@ -179,7 +178,7 @@ def main():
             if event.type == pg.QUIT:
                 return
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
-                # 【変更】スペースキー押下でBeamインスタンス生成し、リストに追加
+                #スペースキー押下でBeamインスタンス生成し、リストに追加
                 beams.append(Beam(bird))          
         screen.blit(bg_img, [0, 0])
         
@@ -205,8 +204,8 @@ def main():
                         beams[j] = None # ビーム消滅
                         bombs[i] = None # 爆弾消滅
                         bird.change_img(6, screen)
-                        score.score += 1
-
+                        score.score += 1  # 爆弾を打ち落としたのでスコアを1加算
+                        
         # Noneになった爆弾をリストから消去
         bombs = [bomb for bomb in bombs if bomb is not None]
         
