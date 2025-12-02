@@ -218,7 +218,7 @@ def main():
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
         
-        # リスト内の全ビームを更新
+        # リスト内の全ビームを更新。
         for beam in beams:
             beam.update(screen)
         
